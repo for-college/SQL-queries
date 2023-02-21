@@ -2,7 +2,7 @@ CREATE DATABASE `homework`; -- Создание БД
 USE `homework`; -- Использование БД
 
 
-CREATE TABLE `worker` ( -- Создание таблтцы
+CREATE TABLE `worker` ( -- Создание таблицы
     `id` int PRIMARY KEY AUTO_INCREMENT,
     `name` varchar(128) NOT NULL,
     `lastname` varchar(255) NOT NULL,
@@ -44,7 +44,8 @@ SELECT * FROM `worker` ORDER BY experience DESC; -- Сортировка. Отс
 
 SELECT sex, AVG(salary) AS 'ЗП' FROM `worker` WHERE sex = 0 GROUP BY sex; -- Условия с группировкой. Найти среднюю зарплату девушек в компании.
 
-SELECT id AS 'Работник', salary AS 'ЗП', salary * 12 * experience AS 'Заработал за всё вреия' -- Подзапрос. Выбрать работника, который за всё время работы заработал больше всех.
+SELECT id AS 'Работник', salary AS 'ЗП', salary * 12 * experience AS 'Заработал за всё вреия' -- Подзапрос. 
+                                                                                    -- Выбрать работника, который за всё время работы заработал больше всех.
 FROM `worker`
 WHERE salary * 12 * experience = (SELECT MAX(salary * 12 * experience) FROM `worker`);
 
